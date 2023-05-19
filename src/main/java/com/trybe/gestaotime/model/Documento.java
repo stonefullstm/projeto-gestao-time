@@ -11,15 +11,15 @@ import javax.persistence.Table;
  * Classe Documento.
  */
 @Entity
-@Table(name = "DOCUMENTOS")
+@Table(name = "Documentos")
 public class Documento {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String cpf;
-  @Column(name = "CARTEIRA_TRABALHO")
+  @Column(name = "carteira_trabalho")
   private String carteiraTrabalho;
-  @Column(name = "NUMERO_CBF")
+  @Column(name = "numero_cbf")
   private String numeroCbf;
 
   /**
