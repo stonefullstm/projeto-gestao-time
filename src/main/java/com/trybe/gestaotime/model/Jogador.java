@@ -87,7 +87,7 @@ public class Jogador {
   }
 
   /**
-   * Método getTime;
+   * Método getTime.
    */
   public Time getTime() {
     return time;
