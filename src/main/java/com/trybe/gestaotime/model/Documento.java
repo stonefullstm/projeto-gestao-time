@@ -18,7 +18,7 @@ public class Documento {
   private Long id;
   private String cpf;
   @Column(name = "carteira_trabalho")
-  private String carteiraTrabalho;
+  private String numeroCarteiraTrabalho;
   @Column(name = "numero_cbf")
   private String numeroCbf;
 
@@ -53,15 +53,15 @@ public class Documento {
   /**
    * Método getCarteiraTrabalho.
    */
-  public String getCarteiraTrabalho() {
-    return carteiraTrabalho;
+  public String getNumeroCarteiraTrabalho() {
+    return numeroCarteiraTrabalho;
   }
 
   /**
    * Método setCarteiraTrabalho.
    */
-  public void setCarteiraTrabalho(String carteiraTrabalho) {
-    this.carteiraTrabalho = carteiraTrabalho;
+  public void setNumeroCarteiraTrabalho(String numeroCarteiraTrabalho) {
+    this.numeroCarteiraTrabalho = numeroCarteiraTrabalho;
   }
 
   /**

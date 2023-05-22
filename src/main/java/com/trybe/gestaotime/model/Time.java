@@ -67,10 +67,10 @@ public class Time {
   }
 
   /**
-   * Método addJogador.
+   * Método setJogadores.
    */
-  public void addJogador(Jogador jogador) {
-    this.jogadores.add(jogador);
+  public void setJogadores(List<Jogador> jogadores) {
+    this.jogadores = jogadores;
   }
 
   /**
@@ -81,10 +81,10 @@ public class Time {
   }
 
   /**
-   * Método addTorcedor.
+   * Método setTorcedores.
    */
-  public void addTorcedor(Torcedor torcedor) {
-    this.torcedores.add(torcedor);
+  public void setTorcedores(List<Torcedor> torcedores) {
+    this.torcedores = torcedores;
   }
 
 }
