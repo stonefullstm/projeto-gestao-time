@@ -12,17 +12,14 @@ public class TimeDao extends GenericDao<Time, Integer> {
 
   @Override
   public void deletar(Long id) {
-    EntityManager em = emf.createEntityManager();
     Time toBeDeleted = em.find(Time.class, id);
     em.getTransaction().begin();
     em.remove(toBeDeleted);
     em.getTransaction().commit();
-    em.close();
   }
 
   @Override
   public List<Time> listar() {
-    EntityManager em = emf.createEntityManager();
     CriteriaBuilder cb = em.getCriteriaBuilder();
     CriteriaQuery<Time> cq = cb.createQuery(Time.class);
     Root<Time> rootEntry = cq.from(Time.class);
@@ -30,12 +27,13 @@ public class TimeDao extends GenericDao<Time, Integer> {
 
     TypedQuery<Time> allQuery = em.createQuery(all);
     return allQuery.getResultList();
+
   }
 
   @Override
   public Time buscarPorId(Long id) {
-    EntityManager em = emf.createEntityManager();
     return em.find(Time.class, id);
+
   }
 
 }
