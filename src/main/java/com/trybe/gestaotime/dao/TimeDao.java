@@ -2,6 +2,7 @@ package com.trybe.gestaotime.dao;
 
 import com.trybe.gestaotime.model.Time;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -11,14 +12,17 @@ public class TimeDao extends GenericDao<Time, Integer> {
 
   @Override
   public void deletar(Long id) {
+    EntityManager em = emf.createEntityManager();
     Time toBeDeleted = em.find(Time.class, id);
     em.getTransaction().begin();
     em.remove(toBeDeleted);
     em.getTransaction().commit();
+    em.close();
   }
 
   @Override
   public List<Time> listar() {
+    EntityManager em = emf.createEntityManager();
     CriteriaBuilder cb = em.getCriteriaBuilder();
     CriteriaQuery<Time> cq = cb.createQuery(Time.class);
     Root<Time> rootEntry = cq.from(Time.class);
@@ -30,6 +34,7 @@ public class TimeDao extends GenericDao<Time, Integer> {
 
   @Override
   public Time buscarPorId(Long id) {
+    EntityManager em = emf.createEntityManager();
     return em.find(Time.class, id);
   }
 
