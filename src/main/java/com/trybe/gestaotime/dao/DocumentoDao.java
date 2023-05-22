@@ -15,7 +15,6 @@ public class DocumentoDao extends GenericDao<Documento, Integer> {
     em.getTransaction().begin();
     em.remove(toBeDeleted);
     em.getTransaction().commit();
-    em.close();
   }
 
   @Override

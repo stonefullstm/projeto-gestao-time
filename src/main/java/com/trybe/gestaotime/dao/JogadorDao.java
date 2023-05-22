@@ -16,7 +16,6 @@ public class JogadorDao extends GenericDao<Jogador, Integer> {
     em.getTransaction().begin();
     em.remove(toBeDeleted);
     em.getTransaction().commit();
-    em.close();
   }
 
   @Override

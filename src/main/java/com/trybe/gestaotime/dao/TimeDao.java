@@ -15,7 +15,6 @@ public class TimeDao extends GenericDao<Time, Integer> {
     em.getTransaction().begin();
     em.remove(toBeDeleted);
     em.getTransaction().commit();
-    em.close();
   }
 
   @Override

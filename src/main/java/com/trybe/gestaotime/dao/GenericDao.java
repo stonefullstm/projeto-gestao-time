@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 
 public abstract class GenericDao<T, I extends Serializable> {
 
-  EntityManager em =
+  public static final EntityManager em =
       Persistence.createEntityManagerFactory("crudHibernatePU").createEntityManager();
 
   /**
@@ -21,7 +21,6 @@ public abstract class GenericDao<T, I extends Serializable> {
     em.getTransaction().begin();
     em.persist(entity);
     em.getTransaction().commit();
-    em.close();
   }
 
   /**
