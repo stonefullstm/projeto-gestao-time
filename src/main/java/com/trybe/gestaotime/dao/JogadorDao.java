@@ -14,7 +14,7 @@ public class JogadorDao extends GenericDao<Jogador, Integer> {
   private EntityManagerFactory emf;
 
   public JogadorDao() {
-    this.emf = GenericDao.emf;
+    this.emf = super.emf;
   }
 
   @Override
@@ -24,7 +24,7 @@ public class JogadorDao extends GenericDao<Jogador, Integer> {
     em.getTransaction().begin();
     em.remove(toBeDeleted);
     em.getTransaction().commit();
-    // em.close();
+    em.close();
   }
 
   @Override
@@ -36,7 +36,7 @@ public class JogadorDao extends GenericDao<Jogador, Integer> {
     CriteriaQuery<Jogador> all = cq.select(rootEntry);
     TypedQuery<Jogador> allQuery = em.createQuery(all);
     List<Jogador> result = allQuery.getResultList();
-    // em.close();
+    em.close();
     return result;
   }
 
@@ -44,7 +44,7 @@ public class JogadorDao extends GenericDao<Jogador, Integer> {
   public Jogador buscarPorId(Long id) {
     EntityManager em = this.emf.createEntityManager();
     Jogador result = em.find(Jogador.class, id);
-    // em.close();
+    em.close();
     return result;
   }
 

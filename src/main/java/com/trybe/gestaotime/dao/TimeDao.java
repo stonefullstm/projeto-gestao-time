@@ -13,7 +13,7 @@ public class TimeDao extends GenericDao<Time, Integer> {
   private EntityManagerFactory emf;
 
   public TimeDao() {
-    this.emf = GenericDao.emf;
+    this.emf = super.emf;
   }
 
   @Override
@@ -35,7 +35,7 @@ public class TimeDao extends GenericDao<Time, Integer> {
     CriteriaQuery<Time> all = cq.select(rootEntry);
     TypedQuery<Time> allQuery = em.createQuery(all);
     List<Time> result = allQuery.getResultList();
-    // em.close();
+    em.close();
     return result;
   }
 
@@ -43,7 +43,7 @@ public class TimeDao extends GenericDao<Time, Integer> {
   public Time buscarPorId(Long id) {
     EntityManager em = this.emf.createEntityManager();
     Time result = em.find(Time.class, id);
-    // em.close();
+    em.close();
     return result;
   }
 

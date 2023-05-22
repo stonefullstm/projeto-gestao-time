@@ -12,8 +12,7 @@ import javax.persistence.Persistence;
 
 public abstract class GenericDao<T, I extends Serializable> {
 
-  protected static final EntityManagerFactory emf =
-      Persistence.createEntityManagerFactory("crudHibernatePU");
+  EntityManagerFactory emf = Persistence.createEntityManagerFactory("crudHibernatePU");
 
   /**
    * Método salvar.
@@ -23,7 +22,7 @@ public abstract class GenericDao<T, I extends Serializable> {
     em.getTransaction().begin();
     em.persist(entity);
     em.getTransaction().commit();
-    // em.close();
+    em.close();
   }
 
   /**
@@ -34,7 +33,7 @@ public abstract class GenericDao<T, I extends Serializable> {
     em.getTransaction().begin();
     em.merge(entity);
     em.getTransaction().commit();
-    // em.close();
+    em.close();
   }
 
   public abstract void deletar(Long id);

@@ -23,7 +23,7 @@ public class Jogador {
   private String posicao;
 
   @JoinColumn(name = "documento_id")
-  @OneToOne(fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.EAGER)
   private Documento documento;
 
   @ManyToOne

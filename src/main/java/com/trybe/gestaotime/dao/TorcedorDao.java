@@ -14,7 +14,7 @@ public class TorcedorDao extends GenericDao<Torcedor, Integer> {
   private EntityManagerFactory emf;
 
   public TorcedorDao() {
-    this.emf = GenericDao.emf;
+    this.emf = super.emf;
   }
 
   @Override
@@ -24,7 +24,7 @@ public class TorcedorDao extends GenericDao<Torcedor, Integer> {
     em.getTransaction().begin();
     em.remove(toBeDeleted);
     em.getTransaction().commit();
-    // em.close();
+    em.close();
   }
 
   @Override
@@ -36,7 +36,7 @@ public class TorcedorDao extends GenericDao<Torcedor, Integer> {
     CriteriaQuery<Torcedor> all = cq.select(rootEntry);
     TypedQuery<Torcedor> allQuery = em.createQuery(all);
     List<Torcedor> result = allQuery.getResultList();
-    // em.close();
+    em.close();
     return result;
   }
 
@@ -44,7 +44,7 @@ public class TorcedorDao extends GenericDao<Torcedor, Integer> {
   public Torcedor buscarPorId(Long id) {
     EntityManager em = this.emf.createEntityManager();
     Torcedor result = em.find(Torcedor.class, id);
-    // em.close();
+    em.close();
     return result;
   }
 

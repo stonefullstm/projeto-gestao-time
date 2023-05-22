@@ -13,7 +13,7 @@ public class DocumentoDao extends GenericDao<Documento, Integer> {
   private EntityManagerFactory emf;
 
   public DocumentoDao() {
-    this.emf = GenericDao.emf;
+    this.emf = super.emf;
   }
 
   @Override
@@ -23,7 +23,7 @@ public class DocumentoDao extends GenericDao<Documento, Integer> {
     em.getTransaction().begin();
     em.remove(toBeDeleted);
     em.getTransaction().commit();
-    // em.close();
+    em.close();
   }
 
   @Override
@@ -35,7 +35,7 @@ public class DocumentoDao extends GenericDao<Documento, Integer> {
     CriteriaQuery<Documento> all = cq.select(rootEntry);
     TypedQuery<Documento> allQuery = em.createQuery(all);
     List<Documento> result = allQuery.getResultList();
-    // em.close();
+    em.close();
     return result;
   }
 
@@ -43,7 +43,7 @@ public class DocumentoDao extends GenericDao<Documento, Integer> {
   public Documento buscarPorId(Long id) {
     EntityManager em = this.emf.createEntityManager();
     Documento result = em.find(Documento.class, id);
-    // em.close();
+    em.close();
     return result;
   }
 
