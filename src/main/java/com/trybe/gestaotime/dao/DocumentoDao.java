@@ -11,8 +11,11 @@ public class DocumentoDao extends GenericDao<Documento, Integer> {
 
   @Override
   public void deletar(Long id) {
-    // TODO Auto-generated method stub
-
+    Documento toBeDeleted = em.find(Documento.class, id);
+    em.getTransaction().begin();
+    em.remove(toBeDeleted);
+    em.getTransaction().commit();
+    em.close();
   }
 
   @Override
